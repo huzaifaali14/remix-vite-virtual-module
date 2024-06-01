@@ -1,4 +1,11 @@
 import type { MetaFunction } from "@remix-run/node";
+//@ts-ignore
+// eslint-disable-next-line import/no-unresolved
+import { msg } from 'virtual:my-module'
+
+console.log("_______")
+console.log("______msg from virtual module____", msg)
+console.log("_______")
 
 export const meta: MetaFunction = () => {
   return [

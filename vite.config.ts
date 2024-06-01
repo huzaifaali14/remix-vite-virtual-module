@@ -12,5 +12,18 @@ export default defineConfig({
       },
     }),
     tsconfigPaths(),
+    {
+      name: 'my-plugin',
+      resolveId(id) {
+        if (id === 'virtual:my-module') {
+          return '\0' + 'virtual:my-module'
+        }
+      },
+      load(id) {
+        if (id === '\0' + 'virtual:my-module') {
+          return `export const msg = "Hello world"`
+        }
+      },
+    }
   ],
 });
